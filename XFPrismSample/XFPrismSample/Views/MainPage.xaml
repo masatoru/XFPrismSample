@@ -7,7 +7,8 @@
              Title="{Binding Title}">
 
     <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-        <Label Text="Welcome to Xamarin Forms and Prism!" />
+        <Label Text="暗号を入力してください" />
+        <Entry Text="{Binding Password.Value}"></Entry>
         <Button Text="Next Page" Command="{Binding NextPageCommand}"></Button>
     </StackLayout>
 
