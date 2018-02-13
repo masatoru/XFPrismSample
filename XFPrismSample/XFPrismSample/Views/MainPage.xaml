@@ -8,6 +8,7 @@
 
     <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
         <Label Text="Welcome to Xamarin Forms and Prism!" />
+        <Button Text="Next Page" Command="{Binding NextPageCommand}"></Button>
     </StackLayout>
 
 </ContentPage>
