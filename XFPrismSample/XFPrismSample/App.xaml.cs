@@ -31,6 +31,7 @@ namespace XFPrismSample
         {
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage>();
+            containerRegistry.RegisterForNavigation<SecondPage>();
         }
     }
 }
