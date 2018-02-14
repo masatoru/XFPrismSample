@@ -4,5 +4,9 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="XFPrismSample.Views.DetailPage">
-  
+
+    <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+        <Label Text="{Binding Id.Value}"></Label>
+        <Label Text="{Binding Name.Value}"></Label>
+    </StackLayout>
 </ContentPage>

@@ -9,12 +9,13 @@ using XFPrismSample.Models;
 
 namespace XFPrismSample.ViewModels
 {
-	public class DetailPageViewModel : BindableBase, INavigationAware
+    public class DetailPageViewModel : BindableBase, INavigationAware
     {
-        public ReactiveProperty<Person> DetailPerson { get; set; } = new ReactiveProperty<Person>();
+        public ReactiveProperty<int> Id { get; set; } = new ReactiveProperty<int>();
+        public ReactiveProperty<string> Name { get; set; } = new ReactiveProperty<string>();
+
         public DetailPageViewModel()
         {
-
         }
 
         public void OnNavigatedFrom(NavigationParameters parameters)
@@ -24,7 +25,11 @@ namespace XFPrismSample.ViewModels
         public void OnNavigatedTo(NavigationParameters parameters)
         {
             if (parameters.ContainsKey("person"))
-                DetailPerson.Value = (Person)parameters["person"];
+            {
+                var person = (Person) parameters["person"];
+                Id.Value = person.Id;
+                Name.Value = person.Name;
+            }
         }
 
         public void OnNavigatingTo(NavigationParameters parameters)
