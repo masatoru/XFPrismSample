@@ -16,7 +16,7 @@ namespace XFPrismSample.ViewModels
     {
         protected INavigationService NavigationService { get; private set; }
         public ReactiveCommand DetailPageCommand { get; private set; } /*= new ReactiveCommand();*/
-        public ObservableCollection<Person> PeopleList { get; set; }
+        public ReadOnlyObservableCollection<Person> PeopleList { get; set; }
         public ReactiveProperty<Person> SelectedPerson { get; set; } = new ReactiveProperty<Person>();
         public ReactiveProperty<string> Title { get; set; } = new ReactiveProperty<string>();
         private IPersonManager PersonManager { get; set; }
@@ -28,11 +28,11 @@ namespace XFPrismSample.ViewModels
         /// <param name="personManager"></param>
         public MainPageViewModel(INavigationService navigationService, IPersonManager personManager)
         {
-            NavigationService = navigationService;
-            PersonManager = personManager;
             Title.Value = "Main Page";
 
-            PeopleList = PersonManager.PeopleList;
+            NavigationService = navigationService;
+            PersonManager = personManager;
+            PeopleList = PersonManager.PeopleList.ToReadOnlyReactiveCollection();
 
             // 選択されていればDetailPageをタップできる
             this.DetailPageCommand = this.SelectedPerson
