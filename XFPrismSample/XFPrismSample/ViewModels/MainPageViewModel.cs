@@ -14,8 +14,9 @@ namespace XFPrismSample.ViewModels
 {
     public class MainPageViewModel : ViewModelBase
     {
-        public ReactiveCommand NextPageCommand { get; private set; } = new ReactiveCommand();
+        public ReactiveCommand DetailPageCommand { get; private set; } /*= new ReactiveCommand();*/
         public ObservableCollection<Person> PeopleList { get; set; }
+        public ReactiveProperty<Person> SelectedPerson { get; set; } = new ReactiveProperty<Person>();
 
         public MainPageViewModel(INavigationService navigationService)
             : base(navigationService)
@@ -24,11 +25,16 @@ namespace XFPrismSample.ViewModels
 
             PeopleList = new ObservableCollection<Person>()
             {
-                new Person{Id=1,Name="Ohtani"},
-                new Person{Id=2,Name="Darvish"},
-                new Person{Id=3,Name="Tanaka"},
+                new Person {Id = 1, Name = "Ohtani"},
+                new Person {Id = 2, Name = "Darvish"},
+                new Person {Id = 3, Name = "Tanaka"},
             };
-            this.NextPageCommand.Subscribe(async _ => await NavigationService.NavigateAsync("DetailPage"));
+
+            this.DetailPageCommand = this.SelectedPerson
+                .Select(x => x != null) // 選択されていれば
+                .ToReactiveCommand(); // 実行可能なCommandを作る
+
+            this.DetailPageCommand.Subscribe(async _ => await NavigationService.NavigateAsync("DetailPage"));
         }
     }
 }

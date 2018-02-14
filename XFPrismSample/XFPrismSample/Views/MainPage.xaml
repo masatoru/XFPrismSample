@@ -16,14 +16,15 @@
         <ListView Grid.Row="0"
                   HasUnevenRows="true"
                   IsPullToRefreshEnabled="True"
-                  ItemsSource="{Binding PeopleList}">
+                  ItemsSource="{Binding PeopleList}"
+                  SelectedItem="{Binding SelectedPerson.Value}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout Orientation="Horizontal">
                             <Label Text="{Binding Id}" />
                             <StackLayout Padding="5">
-                                <Label Text="{Binding Name}" VerticalTextAlignment="Center" />
+                                <Label Style="{DynamicResource LabelStyleId}" Text="{Binding Name}" VerticalTextAlignment="Center" />
                             </StackLayout>
                         </StackLayout>
                     </ViewCell>
