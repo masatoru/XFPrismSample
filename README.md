@@ -1,5 +1,6 @@
 # XFPrismSample
 ## Xamarin.FormsとPrismを使ったサンプルプロジェクト
+### ポイント
 - XAML
     - レイアウト - Grid, StackLayout
     - コントロール - ListView, Button
@@ -20,3 +21,7 @@
         - XAMLでのValueつけ忘れ
         - ReSharperプラグイン - http://blog.okazuki.jp/entry/2017/02/04/214726
 - .NET Standard 2.0
+---
+- UnitTest
+- AAD
+- カメラサンプル
