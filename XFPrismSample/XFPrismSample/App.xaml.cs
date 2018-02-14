@@ -5,6 +5,7 @@ using XFPrismSample.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Prism.Unity;
+using XFPrismSample.Models;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace XFPrismSample
@@ -35,6 +36,8 @@ namespace XFPrismSample
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage>();
             containerRegistry.RegisterForNavigation<DetailPage>();
+
+            containerRegistry.Register<IPersonManager,PersonManager>();
         }
     }
 }

@@ -19,18 +19,20 @@ namespace XFPrismSample.ViewModels
         public ObservableCollection<Person> PeopleList { get; set; }
         public ReactiveProperty<Person> SelectedPerson { get; set; } = new ReactiveProperty<Person>();
         public ReactiveProperty<string> Title { get; set; } = new ReactiveProperty<string>();
+        private IPersonManager PersonManager { get; set; }
 
-        public MainPageViewModel(INavigationService navigationService)
+        /// <summary>
+        /// App.xaml.csでRegisterしたインタフェースを引数で受け取ることができる（DIの機能）
+        /// </summary>
+        /// <param name="navigationService"></param>
+        /// <param name="personManager"></param>
+        public MainPageViewModel(INavigationService navigationService, IPersonManager personManager)
         {
             NavigationService = navigationService;
+            PersonManager = personManager;
             Title.Value = "Main Page";
 
-            PeopleList = new ObservableCollection<Person>()
-            {
-                new Person {Id = 1, Name = "Ohtani"},
-                new Person {Id = 2, Name = "Darvish"},
-                new Person {Id = 3, Name = "Tanaka"},
-            };
+            PeopleList = PersonManager.PeopleList;
 
             // 選択されていればDetailPageをタップできる
             this.DetailPageCommand = this.SelectedPerson
