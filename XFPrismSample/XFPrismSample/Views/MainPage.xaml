@@ -5,7 +5,7 @@
              xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              x:Class="XFPrismSample.Views.MainPage"
              mvvm:ViewModelLocator.AutowireViewModel="True"
-             Title="{Binding Title}">
+             Title="{Binding Title.Value}">
 
     <Grid Margin="10">
         <Grid.RowDefinitions>

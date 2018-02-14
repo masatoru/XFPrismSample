@@ -12,16 +12,18 @@ using XFPrismSample.Models;
 
 namespace XFPrismSample.ViewModels
 {
-    public class MainPageViewModel : ViewModelBase
+    public class MainPageViewModel : BindableBase, INavigationAware
     {
+        protected INavigationService NavigationService { get; private set; }
         public ReactiveCommand DetailPageCommand { get; private set; } /*= new ReactiveCommand();*/
         public ObservableCollection<Person> PeopleList { get; set; }
         public ReactiveProperty<Person> SelectedPerson { get; set; } = new ReactiveProperty<Person>();
+        public ReactiveProperty<string> Title { get; set; } = new ReactiveProperty<string>();
 
         public MainPageViewModel(INavigationService navigationService)
-            : base(navigationService)
         {
-            Title = "Main Page";
+            NavigationService = navigationService;
+            Title.Value = "Main Page";
 
             PeopleList = new ObservableCollection<Person>()
             {
@@ -34,7 +36,29 @@ namespace XFPrismSample.ViewModels
                 .Select(x => x != null) // 選択されていれば
                 .ToReactiveCommand(); // 実行可能なCommandを作る
 
-            this.DetailPageCommand.Subscribe(async _ => await NavigationService.NavigateAsync("DetailPage"));
+            //var navigationParameters = new NavigationParameters();
+            //navigationParameters.Add("person", SelectedPerson.Value);
+            //this.DetailPageCommand.Subscribe(async _ =>
+            //    await NavigationService.NavigateAsync("DetailPage", navigationParameters));
+
+            this.DetailPageCommand.Subscribe(async _ =>
+            {
+                var navigationParameters = new NavigationParameters();
+                navigationParameters.Add("person", SelectedPerson.Value);
+                await NavigationService.NavigateAsync("DetailPage", navigationParameters);
+            });
+        }
+
+        public void OnNavigatedFrom(NavigationParameters parameters)
+        {
+        }
+
+        public void OnNavigatedTo(NavigationParameters parameters)
+        {
+        }
+
+        public void OnNavigatingTo(NavigationParameters parameters)
+        {
         }
     }
 }
