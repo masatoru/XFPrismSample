@@ -1,7 +1,8 @@
 # XFPrismSample
-## Xamarin.FormsとPrismを使ったサンプル
+## Xamarin.FormsとPrismを使ったサンプルプロジェクト
 - XAML
     - レイアウト - Grid, StackLayout
+    - コントロール - ListView, Button
     - バインディング - Binding
     - スタイル定義 - AppTheme
 - Prism
@@ -10,9 +11,12 @@
     - 画面遷移 - NavigationService.NavigateAsync
     - Dependency Injection（Unity） - RegisterTypes(App.xaml.cs)
 - ReactiveProperty
-    - ReactiveProperty - プロパティ
-    - ReactiveCommand - コマンド
+    - プロパティ - ReactiveProperty
+    - コマンド - ReactiveCommand
         - DetailPageへ移動する
         - リストが選択状態になったら実行可能にする
-    - ReadOnlyObservableCollection - コレクション
-    - 注意点 - XAMLでのValueつけ忘れ
+    - コレクション - ReadOnlyObservableCollection
+    - 注意点
+        - XAMLでのValueつけ忘れ
+        - ReSharperプラグイン - http://blog.okazuki.jp/entry/2017/02/04/214726
+- .NET Standard 2.0
