@@ -6,9 +6,9 @@ using System.Linq;
 
 namespace XFPrismSample.ViewModels
 {
-	public class SecondPageViewModel : BindableBase
+	public class DetailPageViewModel : BindableBase
 	{
-        public SecondPageViewModel()
+        public DetailPageViewModel()
         {
 
         }

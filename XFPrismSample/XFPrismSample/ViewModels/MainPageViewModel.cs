@@ -23,7 +23,7 @@ namespace XFPrismSample.ViewModels
             this.NextPageCommand = this.Password
                 .Select(x => x == $"arrows") // 暗号が合っていれば
                 .ToReactiveCommand(); // 実行可能なCommandを作る
-            this.NextPageCommand.Subscribe(async _ => await NavigationService.NavigateAsync("SecondPage"));
+            this.NextPageCommand.Subscribe(async _ => await NavigationService.NavigateAsync("DetailPage"));
         }
     }
 }

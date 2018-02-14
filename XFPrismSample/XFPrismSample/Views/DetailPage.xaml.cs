@@ -2,9 +2,9 @@
 
 namespace XFPrismSample.Views
 {
-    public partial class SecondPage : ContentPage
+    public partial class DetailPage : ContentPage
     {
-        public SecondPage()
+        public DetailPage()
         {
             InitializeComponent();
         }
