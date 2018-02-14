@@ -8,11 +8,14 @@
              Title="{Binding Title.Value}">
 
     <Grid Margin="10">
+        <!-- 2行のGrid表示 -->
+        <!-- autoはコントロールの高さ、*は残り -->
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
 
+        <!-- 一覧を表示 -->
         <ListView Grid.Row="0"
                   HasUnevenRows="true"
                   IsPullToRefreshEnabled="True"
@@ -24,6 +27,7 @@
                         <StackLayout Orientation="Horizontal">
                             <Label Text="{Binding Id}" />
                             <StackLayout Padding="5">
+                                <!-- AppThemeで定義されたスタイルを指定 -->
                                 <Label Style="{DynamicResource LabelStyleId}" Text="{Binding Name}" VerticalTextAlignment="Center" />
                             </StackLayout>
                         </StackLayout>
@@ -32,6 +36,7 @@
             </ListView.ItemTemplate>
         </ListView>
 
+        <!-- 詳細表示ボタン -->
         <Button Grid.Row="1" Text="Detail Page" Command="{Binding DetailPageCommand}" />
     </Grid>
 

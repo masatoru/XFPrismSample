@@ -24,11 +24,14 @@ namespace XFPrismSample
         {
             InitializeComponent();
 
+            // 最初のページを表示
             await NavigationService.NavigateAsync("NavigationPage/MainPage");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
+            // 各Pageを登録する
+            // ※テンプレートで勝手に作成される
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage>();
             containerRegistry.RegisterForNavigation<DetailPage>();

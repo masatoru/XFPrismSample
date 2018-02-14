@@ -22,6 +22,7 @@ namespace XFPrismSample.ViewModels
         {
         }
 
+        // MainPageから渡される引数を取得する
         public void OnNavigatedTo(NavigationParameters parameters)
         {
             if (parameters.ContainsKey("person"))

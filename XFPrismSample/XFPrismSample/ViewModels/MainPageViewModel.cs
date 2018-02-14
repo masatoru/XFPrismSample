@@ -32,19 +32,19 @@ namespace XFPrismSample.ViewModels
                 new Person {Id = 3, Name = "Tanaka"},
             };
 
+            // 選択されていればDetailPageをタップできる
             this.DetailPageCommand = this.SelectedPerson
-                .Select(x => x != null) // 選択されていれば
-                .ToReactiveCommand(); // 実行可能なCommandを作る
+                .Select(x => x != null)
+                .ToReactiveCommand();
 
-            //var navigationParameters = new NavigationParameters();
-            //navigationParameters.Add("person", SelectedPerson.Value);
-            //this.DetailPageCommand.Subscribe(async _ =>
-            //    await NavigationService.NavigateAsync("DetailPage", navigationParameters));
-
+            // DetailPageを表示する
+            // 選択されたPseronを引数にに渡す
             this.DetailPageCommand.Subscribe(async _ =>
             {
                 var navigationParameters = new NavigationParameters();
                 navigationParameters.Add("person", SelectedPerson.Value);
+                // MainPageの次にDetailPageがスタックされる（MainPageに戻るボタンが表示される）
+                // "/DetailPage"だと1枚目になる
                 await NavigationService.NavigateAsync("DetailPage", navigationParameters);
             });
         }
