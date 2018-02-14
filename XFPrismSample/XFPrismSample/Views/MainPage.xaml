@@ -1,4 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
+
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
@@ -6,10 +7,31 @@
              mvvm:ViewModelLocator.AutowireViewModel="True"
              Title="{Binding Title}">
 
-    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-        <Label Text="暗号を入力してください" />
-        <Entry Text="{Binding Password.Value}"></Entry>
-        <Button Text="Next Page" Command="{Binding NextPageCommand}"></Button>
-    </StackLayout>
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+
+        <ListView Grid.Row="0"
+                  HasUnevenRows="true"
+                  IsPullToRefreshEnabled="True"
+                  ItemsSource="{Binding PeopleList}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="{Binding Id}" />
+                            <StackLayout Padding="5">
+                                <Label Text="{Binding Name}" VerticalTextAlignment="Center" />
+                            </StackLayout>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Button Grid.Row="1" Text="Detail Page" Command="{Binding DetailPageCommand}" />
+    </Grid>
 
 </ContentPage>
