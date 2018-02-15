@@ -21,6 +21,7 @@
         - XAMLでのValueつけ忘れ
         - ReSharperプラグイン - http://blog.okazuki.jp/entry/2017/02/04/214726
 - .NET Standard 2.0
+    - https://blogs.msdn.microsoft.com/dotnet/2016/09/26/introducing-net-standard/
 ---
 ### TODO
 - UnitTest
