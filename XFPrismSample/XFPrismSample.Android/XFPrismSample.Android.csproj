@@ -96,9 +96,9 @@
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\XFPrismSample\XFPrismSample.csproj">
-      <Project>{A682884C-CB44-4A89-B752-27BB634E0ABE}</Project>
-      <Name>XFPrismSample</Name>
+    <ProjectReference Include="..\XFPrismSample.Core\XFPrismSample.Core.csproj">
+      <Project>{7EC83F80-D966-4F41-82CC-626FE7CB7D6C}</Project>
+      <Name>XFPrismSample.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
